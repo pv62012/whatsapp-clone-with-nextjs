@@ -5,6 +5,8 @@ import Login from './Login';
 import Loading from '../components/Loading';
 import firebase from 'firebase';
 import { useEffect } from 'react';
+import "tailwindcss/tailwind.css";
+
 function MyApp({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);
 
