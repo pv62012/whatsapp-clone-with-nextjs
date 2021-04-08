@@ -1,25 +1,20 @@
 import styled from "styled-components";
 import { Avatar, Button} from "@material-ui/core";
+import "tailwindcss/tailwind.css";
 
 export const Container = styled.div``;
-export const Header = styled.div`
-  display: flex;
-  position: sticky;
-  top: 0;
-  background-color: white;
-  z-index: 1;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  height: 80px;
-  border-bottom: 1px solid whitesmoke;
-`;
-export const UserAvatar = styled(Avatar)`
-  cursor: pointer;
+export const Header = styled.div.attrs({
+  className:
+    "flex sticky top-0 bg-white z-1 justify-between align-middle p-4 h-20 border-b-2 border-gray-200 ",
+})``;
+export const UserAvatar = styled(Avatar).attrs({
+  className:" cursor-pointer hover:opacity-80"
+})`
+  /* cursor: pointer; */
 
-  :hover {
+  /* :hover {
     opacity: 0.8;
-  }
+  } */
 `;
 
 export const IconsContainer = styled.div``;

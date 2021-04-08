@@ -7,13 +7,13 @@ import Chat from "@material-ui/icons/Chat";
 import { Container, UserAvatar, IconsContainer, Header, Search, SearchInput, SidebarButton } from '../styles/SidebarStyled';
 import SearchIcon from "@material-ui/icons/Search";
 import * as EmailValidator from "email-validator"
-
+import "tailwindcss/tailwind.css";
 import { auth, db } from '../firebase';
 import ChatComponent from './ChatComponent';
 
 function Sidebar() {
-  const [ user]  = useAuthState(auth);
-  console.log(user.email);
+  const [user] = useAuthState(auth);
+
     const userChatRef = db.collection("chats").where('users', 'array-contains', user?.email)
   const [chatSnapshot] = useCollection(userChatRef);
  
@@ -41,7 +41,7 @@ const createChat = () => {
     return (
       <Container>
         <Header>
-          <UserAvatar onClick={()=>auth.signOut()} />
+          <UserAvatar src={user?.photoURL} onClick={()=>auth.signOut()} />
           <IconsContainer>
             <IconButton>
               <Chat />
@@ -58,10 +58,10 @@ const createChat = () => {
             </SidebarButton>
         
         {/* list of chats contact */}
-        { console.table(chatSnapshot) }
+     
         {
           chatSnapshot?.docs.map((chat) => (
-            <ChatComponent key={chat.id} id={ chat.id}/>
+            <ChatComponent key={chat.id} id={chat.id} users={chat.data().users}/>
           ))
         }
       </Container>
