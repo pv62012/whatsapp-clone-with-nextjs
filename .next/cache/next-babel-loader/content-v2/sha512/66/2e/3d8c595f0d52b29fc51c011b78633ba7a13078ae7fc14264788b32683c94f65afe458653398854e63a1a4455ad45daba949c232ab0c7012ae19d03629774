@@ -1,0 +1,1 @@
+{"ast":null,"code":"const getRecipientEmail = (users, userLoggedIn) => {\n  return users === null || users === void 0 ? void 0 : users.filter(userToFilter => userToFilter !== (userLoggedIn === null || userLoggedIn === void 0 ? void 0 : userLoggedIn.email))[0];\n};\n\nexport default getRecipientEmail;","map":null,"metadata":{},"sourceType":"module"}

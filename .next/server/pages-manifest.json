@@ -1,7 +1,10 @@
 {
   "/_app": "pages/_app.js",
+  "/api/hello": "pages/api/hello.js",
+  "/chat/[id]": "pages/chat/[id].js",
+  "/": "pages/index.html",
+  "/login": "pages/login.html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/chat/[id]": "pages/chat/[id].js"
+  "/404": "pages/404.html"
 }
