@@ -14,7 +14,7 @@ import firebase from 'firebase'
 import getRecipientEmail from '../utils/getRecipientEmail'
 import TimeAgo from 'timeago-react';
 function ChatScreen({ chat, messages }) {
-    
+    console.log(messages);
     const [user] = useAuthState(auth)
     const endOfMessageRef=useRef(null)
     const router = useRouter();
@@ -24,31 +24,29 @@ function ChatScreen({ chat, messages }) {
     const [recipientSnapshot]=useCollection(db.collection('users').where("email","==", getRecipientEmail(chat.users, user)))
     
     const showMessage = () => {
-        //  console.log("i am a problenm2 ", messagesSnapshot);
-        
+      
         if (messagesSnapshot) {
-        //  console.log("i am problem 3 ", messagesSnapshot);
-            
-            return messagesSnapshot.docs.map((message) => {
+           
+            return messagesSnapshot.docs.map((message) =>( 
                 // console.log(message);
-               return <Message key={message.id} user={message.data().user}
+               <Message key={message.id} user={message.data().user}
                     message={{
                         ...message.data(),
                         timestamp: message.data()?.timestamp?.toDate().getTime()
                     }}
                 />
-            })
+            ))
         } else {
         //  console.log(messagesSnapshot);
 
             console.log(messages);
-            return JSON.parse(messages).map((message) => {
+            return JSON.parse(messages).map((message) =>( 
                  <Message
                     key={message.id}
                     user={message.user}
                     message={message}
                   />
-            })
+            ))
         }
     }
 
