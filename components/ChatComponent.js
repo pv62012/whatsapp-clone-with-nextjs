@@ -40,5 +40,9 @@ export default ChatComponent
 
 const Container = styled.div.attrs({
   className: "flex items-center cursor-pointer p-4 break-words hover:bg-gray-300",
-})``;
-const UserAvatar = styled(Avatar)``;
+})`
+
+`;
+const UserAvatar = styled(Avatar)`
+margin-right:10px;
+`;

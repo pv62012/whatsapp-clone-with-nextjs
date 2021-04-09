@@ -50,10 +50,10 @@ function ChatScreen({ chat, messages }) {
         }
     }
 
-    const ScrollToBottom = () => {
+    const scrollToBottom = () => {
         endOfMessageRef.current.scrollIntoView({
             behavior: "smooth",
-            block:"start"
+            block:"start",
         })
     }
     const sendMessage = (e) => {
@@ -69,7 +69,7 @@ function ChatScreen({ chat, messages }) {
             photoURL: user.photoURL
         })
         setInput("");
-        ScrollToBottom()
+        scrollToBottom()
     }
     const recipient=recipientSnapshot?.docs?.[0]?.data()
     const recipientEmail=getRecipientEmail(chat.users, user)
@@ -120,19 +120,21 @@ function ChatScreen({ chat, messages }) {
 export default ChatScreen
 
 const Container = styled.div.attrs({
-    className:"h-screen"
+    className:"h-full overflow-hidden"
 })``;
 
 const Header = styled.div.attrs({
-    className:"sticky bg-white z-100 top-0 flex p-2 h-16 items-center border-b-2 border-gray-200"
+    className:"sticky bg-white z-50 top-0 flex p-2 h-16 items-center border-b-2 border-gray-200"
 })``
 const HeaderInformation = styled.div.attrs({
 className:"m-2 flex-1" 
 })``;
 const HeaderIcons = styled.div.attrs({})``;
 const MessageContainer = styled.div.attrs({
-    
-})``;
+    className:"overflow-y-scroll "
+})`
+height:90vh;
+`;
 const InputContainer = styled.div.attrs({
 
      className:"flex items-center p-3 sticky bottom-0 bg-white z-50",
@@ -142,5 +144,7 @@ const Input = styled.input.attrs({
 })``;
 
 const EndOfMessage = styled.div.attrs({
-    className:"m-10"
-})``;
+  
+})`
+margin-bottom:100px;
+`;

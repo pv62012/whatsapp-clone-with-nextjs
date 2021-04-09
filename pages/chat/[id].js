@@ -50,8 +50,8 @@ export async function getServerSideProps(context) {
     }
 }
 const Container = styled.div.attrs({ 
-    className:"flex"
+    className:"flex h-screen"
 })``;
 const ChatContainer = styled.div.attrs({
-  className: "flex-1 h-full",
+  className: "flex-1 h-screen",
 })``;

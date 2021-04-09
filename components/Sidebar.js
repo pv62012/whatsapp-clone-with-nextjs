@@ -4,7 +4,16 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import {useCollection} from 'react-firebase-hooks/firestore'
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Chat from "@material-ui/icons/Chat";
-import { Container, UserAvatar, IconsContainer, Header, Search, SearchInput, SidebarButton } from '../styles/SidebarStyled';
+import {
+  Container,
+  UserAvatar,
+  IconsContainer,
+  Header,
+  Search,
+  SearchInput,
+  SidebarButton,
+  ChatUserList,
+} from "../styles/SidebarStyled";
 import SearchIcon from "@material-ui/icons/Search";
 import * as EmailValidator from "email-validator"
 import "tailwindcss/tailwind.css";
@@ -42,29 +51,30 @@ const createChat = () => {
       <Container>
         {/* {console.log(user?.photoURL)} */}
         <Header>
-          <UserAvatar src={user?.photoURL} onClick={()=>auth.signOut()} />
+          <UserAvatar src={user?.photoURL} onClick={() => auth.signOut()} />
           <IconsContainer>
             <IconButton>
               <Chat />
             </IconButton>
             <MoreVertIcon />
           </IconsContainer>
-            </Header>
-            <Search>
-                <SearchIcon />
-                <SearchInput placeholder="Search in chates"/>
-            </Search>
-            <SidebarButton onClick={createChat}>
-          Start new chat
-            </SidebarButton>
-        
+        </Header>
+        <Search>
+          <SearchIcon />
+          <SearchInput placeholder="Search in chates" />
+        </Search>
+        <SidebarButton onClick={createChat}>Start new chat</SidebarButton>
+
         {/* list of chats contact */}
-     
-        {
-          chatSnapshot?.docs.map((chat) => (
-            <ChatComponent key={chat.id} id={chat.id} users={chat.data().users}/>
-          ))
-        }
+        <ChatUserList>
+          {chatSnapshot?.docs.map((chat) => (
+            <ChatComponent
+              key={chat.id}
+              id={chat.id}
+              users={chat.data().users}
+            />
+          ))}
+        </ChatUserList>
       </Container>
     );
 }

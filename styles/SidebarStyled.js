@@ -8,12 +8,16 @@ border-right:1px solid whitesmoke;
 height:100vh;
 min-width:300px;
 max-width:350px;
-/* overflow-y:scroll; */
+overflow-y:hidden;
 `;
 export const Header = styled.div.attrs({
   className:
-    "flex sticky top-0 bg-white z-50 justify-between align-middle p-4 h-16 border-b-2 border-gray-200 ",
-})``;
+    "flex flex-1 sticky top-0 bg-white z-50 align-middle p-4 h-16 border-b-2 border-gray-200 ",
+})`
+display:flex;
+width:100%;
+justify-content:space-between;
+`;
 export const UserAvatar = styled(Avatar).attrs({
   className:" cursor-pointer hover:opacity-80"
 })`
@@ -43,4 +47,8 @@ export const SidebarButton = styled(Button)`
   width: 100%;
   border-top: 1px solid whitesmoke;
   border-bottom: 1px solid whitesmoke;
+`;
+export const ChatUserList = styled.div`
+height:100%;
+overflow-y:scroll;
 `;
