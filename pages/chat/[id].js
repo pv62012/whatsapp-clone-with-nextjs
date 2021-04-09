@@ -7,7 +7,6 @@ import { auth, db } from '../../firebase'
 import getRecipientEmail from '../../utils/getRecipientEmail'
 import { useAuthState } from 'react-firebase-hooks/auth'
 function Chat({ chat, messages }) {
-    
     const [user]=useAuthState(auth)
     return (
         <Container>
@@ -54,5 +53,5 @@ const Container = styled.div.attrs({
     className:"flex"
 })``;
 const ChatContainer = styled.div.attrs({
-  className: "flex-1 overflow-scroll h-screen",
+  className: "flex-1 h-full",
 })``;

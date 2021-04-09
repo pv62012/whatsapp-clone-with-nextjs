@@ -11,12 +11,12 @@ import { useRouter } from "next/router";
 function ChatComponent({ id, users }) {
   const router = useRouter();
 
-  console.log(users);
+  // console.log(users);
   const [user] = useAuthState(auth)
   const [recipientSnapshot]=useCollection(db.collection("users").where("email","==" , getRecipientEmail(users, user)))
   const recipient=recipientSnapshot?.docs?.[0]?.data()
   const recipientEmail = getRecipientEmail(users, user)
-  console.log(recipientEmail);
+  // console.log(recipientEmail);
   
    
   const enterChat = () => {
@@ -26,7 +26,7 @@ function ChatComponent({ id, users }) {
 
     <Container onClick={enterChat} >
       {recipient ? (
-        <UserAvatar src={recipient?.photoURL} />
+        <UserAvatar src={recipient?.photoUrl} />
       ) : (
         <UserAvatar className="m-1 mr-2 ">{recipientEmail[0]}</UserAvatar>
       )}

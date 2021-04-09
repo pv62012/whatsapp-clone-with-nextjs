@@ -2,10 +2,17 @@ import styled from "styled-components";
 import { Avatar, Button} from "@material-ui/core";
 import "tailwindcss/tailwind.css";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+flex:0.45;
+border-right:1px solid whitesmoke;
+height:100vh;
+min-width:300px;
+max-width:350px;
+/* overflow-y:scroll; */
+`;
 export const Header = styled.div.attrs({
   className:
-    "flex sticky top-0 bg-white z-1 justify-between align-middle p-4 h-20 border-b-2 border-gray-200 ",
+    "flex sticky top-0 bg-white z-50 justify-between align-middle p-4 h-16 border-b-2 border-gray-200 ",
 })``;
 export const UserAvatar = styled(Avatar).attrs({
   className:" cursor-pointer hover:opacity-80"

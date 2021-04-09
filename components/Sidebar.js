@@ -40,6 +40,7 @@ const createChat = () => {
 
     return (
       <Container>
+        {/* {console.log(user?.photoURL)} */}
         <Header>
           <UserAvatar src={user?.photoURL} onClick={()=>auth.signOut()} />
           <IconsContainer>
