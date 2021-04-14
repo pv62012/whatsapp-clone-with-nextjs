@@ -14,7 +14,7 @@ import firebase from 'firebase'
 import getRecipientEmail from '../utils/getRecipientEmail'
 import TimeAgo from 'timeago-react';
 function ChatScreen({ chat, messages }) {
-    console.log(messages);
+    
     const [user] = useAuthState(auth)
     const endOfMessageRef=useRef(null)
     const router = useRouter();
@@ -38,8 +38,6 @@ function ChatScreen({ chat, messages }) {
             ))
         } else {
         //  console.log(messagesSnapshot);
-
-            console.log(messages);
             return JSON.parse(messages).map((message) =>( 
                  <Message
                     key={message.id}
