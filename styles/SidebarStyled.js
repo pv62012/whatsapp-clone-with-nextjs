@@ -3,12 +3,12 @@ import { Avatar, Button} from "@material-ui/core";
 import "tailwindcss/tailwind.css";
 
 export const Container = styled.div`
-flex:0.45;
 border-right:1px solid whitesmoke;
 height:100vh;
 min-width:300px;
 max-width:350px;
 overflow-y:hidden;
+
 `;
 export const Header = styled.div.attrs({
   className:

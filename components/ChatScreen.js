@@ -74,6 +74,7 @@ function ChatScreen({ chat, messages }) {
     return (
       <Container>
         <Header>
+
           {recipient ? <Avatar src={recipient?.photoUrl} /> : <Avatar > {recipientEmail[0]} </Avatar>}
           <HeaderInformation>
                     <h3> {recipientEmail}</h3>
@@ -91,8 +92,8 @@ function ChatScreen({ chat, messages }) {
                     }
            
           </HeaderInformation>
-          <HeaderIcons>
-            <IconButton>
+          <HeaderIcons className="mr-5">
+            <IconButton >
               <AttachFileIcon />
               <MoreVertIcon />
             </IconButton>
@@ -104,12 +105,14 @@ function ChatScreen({ chat, messages }) {
           <EndOfMessage ref={endOfMessageRef} />
         </MessageContainer>
         <InputContainer>
-          <InsertEmoticonIcon />
+      
+        <InsertEmoticonIcon />
           <Input value={input} onChange={(e) => setInput(e.target.value)} />
-          <button disabled={!input} onClick={sendMessage}>
+          <button disabled={!input} type="submit" onClick={sendMessage}>
             Send
           </button>
           <MicIcon />
+      
         </InputContainer>
       </Container>
     );
@@ -118,11 +121,11 @@ function ChatScreen({ chat, messages }) {
 export default ChatScreen
 
 const Container = styled.div.attrs({
-    className:"h-full overflow-hidden"
+    className:"h-full overflow-hidden w-full flex-grow"
 })``;
 
 const Header = styled.div.attrs({
-    className:"sticky bg-white z-50 top-0 flex p-2 h-16 items-center border-b-2 border-gray-200"
+    className:"sticky bg-white z-40 top-0 flex p-2 h-16 items-center border-b-2 border-gray-200"
 })``
 const HeaderInformation = styled.div.attrs({
 className:"m-2 flex-1" 
@@ -133,7 +136,7 @@ const MessageContainer = styled.div.attrs({
 })`
 height:90vh;
 `;
-const InputContainer = styled.div.attrs({
+const InputContainer = styled.form.attrs({
 
      className:"flex items-center p-3 sticky bottom-0 bg-white z-50",
 })``;

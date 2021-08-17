@@ -20,7 +20,7 @@ import "tailwindcss/tailwind.css";
 import { auth, db } from '../firebase';
 import ChatComponent from './ChatComponent';
 
-function Sidebar() {
+function Sidebar({open}) {
   const [user] = useAuthState(auth);
 
     const userChatRef = db.collection("chats").where('users', 'array-contains', user?.email)
@@ -48,7 +48,7 @@ const createChat = () => {
        !!chatSnapshot?.docs.find((chat) => chat.data().users.find((user) =>user=== recipientEmail)?.length > 0);
 
     return (
-      <Container>
+      <Container className={` ${open?"flex":"hidden" } flex-col md:flex md:flex-col"`}>
         {/* {console.log(user?.photoURL)} */}
         <Header>
           <UserAvatar src={user?.photoURL} onClick={() => auth.signOut()} />

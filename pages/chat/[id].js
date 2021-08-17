@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 import Sidebar from '../../components/Sidebar'
@@ -6,15 +6,22 @@ import ChatScreen from '../../components/ChatScreen'
 import { auth, db } from '../../firebase'
 import getRecipientEmail from '../../utils/getRecipientEmail'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 function Chat({ chat, messages }) {
     const [user]=useAuthState(auth)
+    const [open, setOpen] = useState(false)
+
     return (
-        <Container>
+        <Container className="relative">
+              <div className="absolute top-3 right-1 z-50 md:hidden" onClick={()=>setOpen(!open)}>
+                   <MenuOpenIcon style={{width:"40x", height:"40px"}}/>
+                </div>
             <Head>
                 <title>Chat with { getRecipientEmail(chat.users, user)}</title>
             </Head>
-            <Sidebar />
-            <ChatContainer>
+            <Sidebar open={open} />
+            <ChatContainer className={` ${open?"hidden":"flex flex-col"} `} >
+              
                 <ChatScreen chat={chat} messages={ messages}/>
             </ChatContainer>
         </Container>
@@ -50,7 +57,7 @@ export async function getServerSideProps(context) {
     }
 }
 const Container = styled.div.attrs({ 
-    className:"flex h-screen"
+    className:"flex h-screen relative"
 })``;
 const ChatContainer = styled.div.attrs({
   className: "flex-1 h-screen",
